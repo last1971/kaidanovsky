@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostcardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome')->name('welcome');
+
+Route::get('/create-postcard', [PostcardController::class, 'createPostcard'])->name('create-postcard');
+
+Route::post('/create', [PostcardController::class, 'create'])->name('create');
+
+Route::get('/order/{order}', [PostcardController::class, 'order'])->name('order');
+
