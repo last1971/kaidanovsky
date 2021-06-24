@@ -5,6 +5,20 @@
     <form method="POST" action="{{ route('create') }}">
         @csrf
         <div>
+            <span>Вы выбрали</span>
+            @php
+                $color = old('color') ?? request('color')
+            @endphp
+            <label for="color">
+                @if ($color === 'black')
+                    Черная открытка
+                @else
+                    Белая открытка
+                @endif
+            </label>
+            <input id="color" name="color" value="{{ $color }}" hidden>
+        </div>
+        <div>
             <label for="name">Ф.И.О.</label>
             <input id="name" name="name" class="@error('name') is-invalid @enderror" value="{{ old('name') }}">
             @error('name')
@@ -65,13 +79,6 @@
             @error('phone')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-        </div>
-        <div>
-            <span>Цвет</span>
-            <label for="color_black">Черный</label>
-            <input id="color_black" name="color" type="radio" value="black" checked>
-            <label for="color_white">Белый</label>
-            <input id="color_white" name="color" type="radio" value="white">
         </div>
         <div>
             <label for="promocode">Промокод</label>
