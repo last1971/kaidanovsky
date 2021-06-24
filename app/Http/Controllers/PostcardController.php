@@ -13,9 +13,9 @@ class PostcardController extends Controller
         return redirect()->action([PostcardController::class, 'order'], compact('order'));
     }
 
-    public function createPostcard()
+    public function createOrder()
     {
-        return view('postcard');
+        return view('create-order');
     }
 
     public function order(Order $order)

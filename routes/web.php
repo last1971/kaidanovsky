@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('welcome');
 
-Route::get('/create-postcard', [PostcardController::class, 'createPostcard'])->name('create-postcard');
+Route::get('/create-order', [PostcardController::class, 'createOrder'])->name('create-order');
 
 Route::post('/create', [PostcardController::class, 'create'])->name('create');
 
