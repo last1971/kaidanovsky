@@ -25,10 +25,8 @@ class PostcardRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'regex:/[А-Яа-я]+\s[А-Яа-я]+\s[А-Яа-я]+/u',
-            'index' => 'regex:/\d{6}/',
-            'region' => 'nullable|string',
-            'locality' => 'required',
+            'name' => 'regex:/\S+\s\S+\s.+/u',
+            'index' => 'required',
             'address' => 'required',
             'email' => 'regex:/^.+@.+$/i',
             'phone' => 'regex:/[\d\-\+]{11,}/',

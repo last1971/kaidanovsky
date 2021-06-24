@@ -3,21 +3,13 @@
 @section('content')
     <div>Ваш заказ</div>
     <div>
-        <span>Ф.И.О.</span><span>{{ $order->name }}</span>
+        <span>Кому</span><span>{{ $order->name }}</span>
     </div>
     <div>
         <span>Индекс</span><span>{{ $order->index }}</span>
     </div>
     <div>
-        @if($order->refion)
-            <span>Регион</span><span>{{ $order->region }}</span>
-        @endif
-    </div>
-    <div>
-        <span>Населенный пункт</span><span>{{ $order->locality }}</span>
-    </div>
-    <div>
-        <span>Адрес</span><span>{{ $order->address }}</span>
+        <span>Куда</span><span>{{ $order->address }}</span>
     </div>
     <div>
         <span>Email</span><span>{{ $order->email }}</span>

@@ -11,7 +11,7 @@ class Order extends Model
     use HasFactory, Uuids;
 
     public $fillable = [
-        'name', 'index', 'region', 'locality', 'address', 'email', 'phone', 'color', 'amount', 'promo_code_id'
+        'name', 'index', 'address', 'email', 'phone', 'color', 'amount', 'promo_code_id'
     ];
 
     public function promoCode()

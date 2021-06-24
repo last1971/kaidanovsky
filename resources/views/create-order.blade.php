@@ -19,7 +19,7 @@
             <input id="color" name="color" value="{{ $color }}" hidden>
         </div>
         <div>
-            <label for="name">Ф.И.О.</label>
+            <label for="name">Кому</label>
             <input id="name" name="name" class="@error('name') is-invalid @enderror" value="{{ old('name') }}">
             @error('name')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -33,25 +33,7 @@
             @enderror
         </div>
         <div>
-            <label for="region">Регион</label>
-            <input id="region" name="region" class="@error('region') is-invalid @enderror" value="{{ old('region') }}">
-            @error('region')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
-        <div>
-            <label for="locality">Населенный пункт</label>
-            <input id="locality"
-                   name="locality"
-                   class="@error('locality') is-invalid @enderror"
-                   value="{{ old('locality') }}"
-            >
-            @error('locality')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
-        <div>
-            <label for="address">Адрес</label>
+            <label for="address">Куда</label>
             <input id="address"
                    name="address"
                    class="@error('address') is-invalid @enderror"
