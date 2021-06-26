@@ -28,7 +28,7 @@ class PostcardRequest extends FormRequest
             'name' => 'regex:/\S+\s\S+\s.+/u',
             'index' => 'required',
             'address' => 'required',
-            'email' => 'regex:/^.+@.+$/i',
+            'email' => 'email',
             'phone' => 'regex:/[\d\-\+]{11,}/',
             'color' => 'in:black,white',
             'promocode' => [

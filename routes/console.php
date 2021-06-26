@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('test1', function () {
+    $o = \App\Models\Order::query()->first();
+    $r = new \App\Http\Resources\OrderResource($o);
+    dd($r->toArray(request()), $r->getSignature());
+})->purpose('Display test1');
