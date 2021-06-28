@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    Здесь можно
+    Здесь можно !!!!
     <div>
         <a href="{{ route('create-order', ['color' => 'black']) }}">получить черную открытку</a>
     </div>
