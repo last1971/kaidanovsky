@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="format-detection" content="telephone=no">
 
-    <title>Кайдановский</title>
+    <meta name="Description" content="75 лет Александру Кайдановскому: получи памятную открытку с гашением печатью одного дня в любую точку мира.">
+    <meta name="keywords" content="Ростов, Открытка Кайдановский, Памятная открытка Кайдановский, печать одного дня, Почта России Кайдановский, Кайдановский, 75 лет Кайдановскому, Свой среди чужих, Чужой среди своих, Сталкер">
+
+    <meta property="og:site_name" content="DON.RU" />
+    <meta property="og:title" content="75 лет Александру Кайдановскому">
+    <meta property="og:description" content="75 лет Александру Кайдановскому: получи памятную открытку с гашением печатью одного дня в любую точку мира.">
+    <meta property="og:image" content="http://don.ru/otkrytka_kaidanovsky_og.jpg" />
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://don.ru/" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="75 лет Александру Кайдановскому: получи памятную открытку с гашением печатью одного дня в любую точку мира." />
+    <meta name="twitter:image" content="http://don.ru/img/otkrytka_kaidanovsky_og.jpg" />
+
+    <meta property="fb:admins" content="100000432952509" />
+    <title>75 лет Александру Кайдановскому</title>
+
+    <link rel="icon" href="favicon.svg">
+    <link rel=”mask-icon” href=”favicon.svg” color=”#000000">
+
+    <!--link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet"-->
+
+    <title>75 лет Александру Кайдановскому</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
