@@ -1,23 +1,60 @@
 @extends('layout')
 
 @section('content')
-    <header>
+    <style>
+        .select-cards {
+            max-width: 596px;
+            margin: 0 auto 20px auto;
+        }
+        .select-cards a {
+            display: inline-block;
+            width: calc(50% - 10px);
+            max-width: 288px;
+            text-align: center;
+        }
+        .select-cards a:first-child {
+            margin-right: 10px;
+        }
+        .select-cards a img {
+            width: 100%;
+        }
+        .card-back {
+            width: 90%;
+            margin: 0 auto 10px auto;
+            max-width: 596px;
+        }
+        .card-back img {
+            width: 100%
+        }
+    </style>
+    <main>
+        <h1>Юбилей Кайдановского</h1>
         <p>
-            23 июля 2021 года великому ростовчанину, Александру Кайдановскому исполнилось бы 75 лет. Александр Леонидович ушел от нас в 1995, но мы помним замечательного актера, прекрасного режиссера и замечательного человека.
+            23 июля 2021 года исполняется 75 лет со дня рождения Александра Кайдановского.
         </p>
         <p>
-            У вас есть редкий шанс получить по почте открытку с гашением марки печатью одного дня, отправленную 23 июля из Ростова-на-Дону. Стоимость открытки 450 рублей, доставка в любую точку планеты Земля бесплатно.
+            Закажите и получите по почте открытку с гашением марки печатью одного дня. Мы отправим её вам 23 июля 2021г. из Ростова-на-Дону. Стоимость открытки 420 - 480 рублей, доставка в любую точку планеты Земля вхоит в стоимость.
         </p>
-    </header>
-    Здесь можно !!!!
-    <div>
-        <a href="{{ route('create-order', ['color' => 'black']) }}">получить черную открытку</a>
-    </div>
-    <div>
-        <a href="{{ route('create-order', ['color' => 'white']) }}">получить белую открытку</a>
-    </div>
-    , с маркой погашенной в День Рождения актера
-    <a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D0%B9%D0%B4%D0%B0%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9,_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80_%D0%9B%D0%B5%D0%BE%D0%BD%D0%B8%D0%B4%D0%BE%D0%B2%D0%B8%D1%87">
-        Александра Леонидовича Кайдановского
-    </a>
+
+        <h2>Выберите варинт открытки:</h2>
+
+        <div class="select-cards">
+            <a href="{{ route('dark') }}">
+                <img alt="тёмный вариант" src="/img/kaydanovsky_2_small.jpg"><br>
+                <span>тёмный вариант</span>
+            </a>
+            <a href="{{ route('light', ['color' => 'white']) }}">
+                <img alt="светлый вариант" src="/img/kaydanovsky_1_small.jpg"><br>
+                <span>светлый вариант</span>
+            </a>
+        </div>
+
+        <div>Юбилейные открытки созданы ещё одним замечательным ростованином - Владимиром Овекиным. Созданы с любовью.</div>
+        <div>
+            <p>Обратная сторона открытки:</p>
+            <div class="card-back">
+                <img alt="обратная сторона открытки" src="/img/card_back.jpg">
+            </div>
+        </div>
+    </main>
 @endsection

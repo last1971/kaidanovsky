@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('welcome');
+Route::view('/', 'under')->name('under');
+Route::view('/test', 'welcome')->name('welcome');
+Route::view('/dark', 'dark')->name('dark');
+Route::view('/light', 'light')->name('light');
 
 Route::post('/test', function (){
    dd(request());
@@ -27,4 +30,5 @@ Route::post('/create', [PostcardController::class, 'create'])->name('create');
 Route::get('/success', [PostcardController::class, 'success'])->name('success');
 
 Route::get('/order/{order}', [PostcardController::class, 'order'])->name('order');
+
 

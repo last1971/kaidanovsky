@@ -25,12 +25,16 @@ class PostcardRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'regex:/\S+\s\S+\s.+/u',
+            'fromName' => 'regex:/\S+\s.+/u',
+            'name' => 'regex:/\S+\s.+/u',
             'index' => 'required',
+            'fromIndex' => 'required',
             'address' => 'required',
+            'customText' => 'required',
+            'fromAddress' => 'required',
             'email' => 'email',
-            'phone' => 'regex:/[\d\-\+]{11,}/',
-            'color' => 'in:black,white',
+            'phone' => 'regex:/[\d\-\+() ]{10,}/',
+            'color' => 'in:dark,light',
             'promocode' => [
                 'nullable',
                 function ($attribute, $value, $fail) {
