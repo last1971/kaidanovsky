@@ -43,7 +43,7 @@
                 <img alt="тёмный вариант" src="/img/kaydanovsky_2_small.jpg"><br>
                 <span>тёмный вариант</span>
             </a>
-            <a href="{{ route('light', ['color' => 'white']) }}">
+            <a href="{{ route('light') }}">
                 <img alt="светлый вариант" src="/img/kaydanovsky_1_small.jpg"><br>
                 <span>светлый вариант</span>
             </a>

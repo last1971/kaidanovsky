@@ -13,7 +13,19 @@ class Order extends Model
     use HasFactory, Uuids;
 
     public $fillable = [
-        'name', 'index', 'address', 'email', 'phone', 'color', 'amount', 'promo_code_id'
+        'name',
+        'index',
+        'address',
+        'email',
+        'phone',
+        'color',
+        'amount',
+        'promo_code_id',
+        'fromName',
+        'fromAddress',
+        'fromIndex',
+        'customText',
+        'social'
     ];
 
     public string $salt;

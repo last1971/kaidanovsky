@@ -51,14 +51,16 @@ class PostcardRequest extends FormRequest
 
     protected function passedValidation()
     {
-        $percent = 0;
+        //$percent = 0;
         $promo_code_id = null;
+        /*
         if ($this->promocode) {
             $promoCode = PromoCode::query()->firstWhere('code', $this->promocode);
             $percent = $promoCode->percent;
             $promo_code_id = $promoCode->id;
         }
-        $amount = config('app.price') * (100 - $percent) / 100;
+        */
+        $amount = config('app.price') - ($this->social ? config('app.discount') : 0);
         $this->merge(compact('promo_code_id', 'amount'));
     }
 }

@@ -376,7 +376,7 @@
 
                 <div>
                     <input {{ old('isSocial') === 'on' ? 'checked' : '' }} id="isSocial" name="isSocial" type="checkbox" onchange="fnChangeSocial()">
-                    <label for="social">Я хочу получить скидку 60 рублей</label>
+                    <label for="isSocial">Я хочу получить скидку 60 рублей</label>
                     <p class="hint">Сумма вашего платежа составит 420 рублей в том случае, если Вы опубликуете пост про нас в своей соцсети. Ниже укажите адрес своего аккаунта в соцсети:</p>
                 </div>
 
