@@ -58,6 +58,17 @@
             font-weight: 900;
             color: #333333;
         }
+        .input-field label.counter {
+            top: inherit;
+            left: inherit;
+            bottom: -15px;
+            right: 15px;
+            border:  solid 1px gray;
+            border-radius: 4px;
+            color: silver;
+            font-weight: 300;
+            font-size: 0.75em;
+        }
         .input-field label.alert {
             left: inherit;
             right: 10px;
@@ -86,8 +97,12 @@
         }
     </style>
     <script>
-        function fnChange(obj) {
-            console.log(obj.value)
+        function fnChange(element) {
+            const input = element.parentElement.querySelector('input,textarea');
+            const counter = element.parentElement.querySelector('.counter');
+            const len = input.value.length
+            const max = input.getAttribute('maxlength');
+            counter.innerHTML = `${len} / ${max}`;
         }
         function fnOnload(){
             document.getElementById('fromName').setAttribute('data-default', 'Киноклуб K-INO.RU');
@@ -96,16 +111,16 @@
                 document.getElementById('fromName').value = '{{ old('fromName') }}';
             } else {
                 document.getElementById('fromName').value = document.getElementById('fromName').getAttribute('data-default');
-                document.getElementById('fromName').setAttribute('disabled', 'disabled');
+                document.getElementById('fromName').setAttribute('readonly', 'readonly');
             }
 
             document.getElementById('fromAddress').setAttribute('data-default', 'г. Ростов-на-Дону, а/я 5560');
             document.getElementById('fromAddress').setAttribute('data-custom', '{{ old('fromAddress') }}');
             if (document.getElementById('customFrom').checked) {
-                document.getElementById('fromAddress').value = '{{ old('fromAddress') }}';
+                document.getElementById('fromAddress').innerText = '{{ old('fromAddress') }}';
             } else {
-                document.getElementById('fromAddress').value = document.getElementById('fromAddress').getAttribute('data-default');
-                document.getElementById('fromAddress').setAttribute('disabled', 'disabled');
+                document.getElementById('fromAddress').innerText = document.getElementById('fromAddress').getAttribute('data-default');
+                document.getElementById('fromAddress').setAttribute('readonly', 'readonly');
             }
 
             document.getElementById('fromIndex').setAttribute('data-default', '344016');
@@ -114,32 +129,40 @@
                 document.getElementById('fromIndex').value = '{{ old('fromIndex') }}';
             } else {
                 document.getElementById('fromIndex').value = document.getElementById('fromIndex').getAttribute('data-default');
-                document.getElementById('fromIndex').setAttribute('disabled', 'disabled');
+                document.getElementById('fromIndex').setAttribute('readonly', 'readonly');
             }
 
-            document.getElementById('customText').setAttribute('data-default', 'Пусть исполнится то, что задумано!"');
+            document.getElementById('customText').setAttribute('data-default', 'Пусть исполнится то, что задумано!');
             document.getElementById('prevCustomText').innerText = document.getElementById('customText').getAttribute('data-default');
             document.getElementById('customText').setAttribute('data-custom', '{{ old('customText') }}');
             if (document.getElementById('isCustomText').checked) {
                 document.getElementById('customText').value = '{{ old('customText') }}';
             } else {
                 document.getElementById('customText').value = document.getElementById('customText').getAttribute('data-default');
-                document.getElementById('customText').setAttribute('disabled', 'disabled');
+                document.getElementById('customText').setAttribute('readonly', 'readonly');
             }
 
             if (document.getElementById('isSocial').checked) {
                 document.getElementById('summ').innerText = '420';
             }
 
+            fnRecalculateLen()
 
-            for (let element of document.getElementsByClassName('counter')){
-                const input = element.parentElement.querySelector('input,textarea');
-                const max = input.getAttribute('maxlength');
-                console.log(element.parentElement.querySelector('input,textarea').value.length)
+            const firstError = document.getElementsByClassName('alert').length ? document.getElementsByClassName('alert')[0] : null;
+            if (firstError) {
+                firstError.scrollIntoView();
             }
 
-            const firstError =
+        }
 
+        function fnRecalculateLen(){
+            for (let element of document.getElementsByClassName('counter')){
+                const input = element.parentElement.querySelector('input,textarea');
+                const counter = element.parentElement.querySelector('.counter');
+                const len = input.value.length
+                const max = input.getAttribute('maxlength');
+                counter.innerHTML = `${len} / ${max}`;
+            }
         }
 
         function fnChangeSocial(){
@@ -152,34 +175,37 @@
 
         function fnChangeCustomFrom(){
             if (document.getElementById('customFrom').checked) {
-                document.getElementById('fromName').removeAttribute('disabled');
+                document.getElementById('fromName').removeAttribute('readonly');
                 document.getElementById('fromName').value = document.getElementById('fromName').getAttribute('data-custom');
-                document.getElementById('fromAddress').removeAttribute('disabled');
+                document.getElementById('fromAddress').removeAttribute('readonly');
                 document.getElementById('fromAddress').value = document.getElementById('fromAddress').getAttribute('data-custom');
-                document.getElementById('fromIndex').removeAttribute('disabled');
+                document.getElementById('fromIndex').removeAttribute('readonly');
                 document.getElementById('fromIndex').value = document.getElementById('fromIndex').getAttribute('data-custom');
             } else {
-                document.getElementById('fromName').setAttribute('disabled', 'disabled');
+                document.getElementById('fromName').setAttribute('readonly', 'readonly');
                 document.getElementById('fromName').setAttribute('data-custom', document.getElementById('fromName').value);
                 document.getElementById('fromName').value = document.getElementById('fromName').getAttribute('data-default');
-                document.getElementById('fromAddress').setAttribute('disabled', 'disabled');
+                document.getElementById('fromAddress').setAttribute('readonly', 'readonly');
                 document.getElementById('fromAddress').setAttribute('data-custom', document.getElementById('fromAddress').value);
                 document.getElementById('fromAddress').value = document.getElementById('fromAddress').getAttribute('data-default');
-                document.getElementById('fromIndex').setAttribute('disabled', 'disabled');
+                document.getElementById('fromIndex').setAttribute('readonly', 'readonly');
                 document.getElementById('fromIndex').setAttribute('data-custom', document.getElementById('fromIndex').value);
                 document.getElementById('fromIndex').value = document.getElementById('fromIndex').getAttribute('data-default');
             }
+
+            fnRecalculateLen();
         }
 
         function fnChangeCustomText(){
             if (document.getElementById('isCustomText').checked) {
-                document.getElementById('customText').removeAttribute('disabled');
+                document.getElementById('customText').removeAttribute('readonly');
                 document.getElementById('customText').value = document.getElementById('customText').getAttribute('data-custom');
             } else {
-                document.getElementById('customText').setAttribute('disabled', 'disabled');
+                document.getElementById('customText').setAttribute('readonly', 'readonly');
                 document.getElementById('customText').setAttribute('data-custom', document.getElementById('customText').value);
                 document.getElementById('customText').value = document.getElementById('customText').getAttribute('data-default');
             }
+            fnRecalculateLen();
         }
     </script>
 @endsection
@@ -235,6 +261,7 @@
                     <label class="alert">ошибка</label>
                     @enderror
                     <textarea
+                        maxlength="255"
                         id="address"
                         placeholder="ул. Победы, д.20, кв.29,
 п.Октябрьский, Борский р-он,
@@ -242,7 +269,9 @@
 "
                         name="address"
                         class="@error('address') is-invalid @enderror"
+                        oninput="fnChange(this)"
                     >{{ old('address') }}</textarea>
+                    <label class="counter"></label>
                 </div>
 
                 <div class="input-field @error('index') is-invalid @enderror">

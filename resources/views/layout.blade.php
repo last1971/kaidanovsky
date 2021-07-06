@@ -126,9 +126,11 @@
         }
         footer > * {
             flex: 1 1 auto;
+            border-top: solid 2px gray;
+            padding-top: 20px;
         }
         footer .links {
-            padding: 50px 5px 0 10px;
+            padding: 75px 5px 0 10px;
         }
         footer .links a {
             display: block;

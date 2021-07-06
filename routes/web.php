@@ -18,6 +18,7 @@ Route::view('/', 'under')->name('under');
 Route::view('/test', 'welcome')->name('welcome');
 Route::view('/dark', 'dark')->name('dark');
 Route::view('/light', 'light')->name('light');
+Route::view('/oferta', 'oferta')->name('oferta');
 
 Route::post('/test', function (){
    dd(request());
