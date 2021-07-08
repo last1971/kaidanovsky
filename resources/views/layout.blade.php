@@ -152,7 +152,7 @@
             <div>
                 <a href="/">
                     <img class="logo-kino" src="/img/k-ino_logo_b.svg" alt="Лого K-INO.RU">
-                </a>
+                </a><br>
                 <a href="https://modulbank.ru/">
                     <img class="logo-modul" src="/img/Modulbank-logo-rgb.svg" alt="Лого MODULBANK">
                 </a>
