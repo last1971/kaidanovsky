@@ -41,7 +41,6 @@
         }
         body {
             width: 100%;
-            height: 100%;
             min-height: 100%;
             font-family: 'Nunito', sans-serif;
             display: flex;
@@ -53,7 +52,6 @@
         }
         main {
             max-width: 1080px;
-            max-height: 1920px;
             flex: 0 1 auto;
             margin: 10px auto;
             width: calc(100% - 20px);
@@ -81,7 +79,7 @@
         }
         .big-img {
             width: 85%;
-            max-width: 720px;
+            max-width: 600px;
             margin: 10px auto;
         }
         .big-img img {
@@ -90,6 +88,7 @@
         }
         .prev-next {
             width: 100%;
+            max-width: 1080px;
             height: 50px;
             margin-bottom: 20px;
             position: relative;
@@ -130,17 +129,19 @@
             padding-top: 20px;
         }
         footer .links {
-            padding: 75px 5px 0 10px;
+            padding: 25px 5px 0 10px;
         }
         footer .links a {
             display: block;
+            margin: 0 0 10px 10px;
         }
         footer .logo-kino {
             width: 100px;
             margin-left: 15px;
         }
-        footer.logo-modul {
-            width: 100px;
+        footer .logo-modul {
+            margin-top: 30px;
+            width: 130px;
         }
     </style>
     @yield('header')
@@ -149,11 +150,18 @@
         @yield('content')
         <footer>
             <div>
-                <img class="logo-kino" src="/img/k-ino_logo_b.svg" alt="Лого K-INO.RU">
-                <img class="logo-modul" src="/img/Modulbank-logo-rgb.svg" alt="Лого MODULBANK">
+                <a href="/">
+                    <img class="logo-kino" src="/img/k-ino_logo_b.svg" alt="Лого K-INO.RU">
+                </a>
+                <a href="https://modulbank.ru/">
+                    <img class="logo-modul" src="/img/Modulbank-logo-rgb.svg" alt="Лого MODULBANK">
+                </a>
+
             </div>
             <div class="links">
                 <a href="/oferta">Публичная оферта</a>
+                <a href="/bank">Реквизиты</a>
+                <a href="/privacy">Соглашение о персональных данных</a>
                 <a href="tel:+79185218017">Телефон: +79185218017</a>
                 <a href="mailto:me@don.ru">E-mail: me@don.ru</a>
             </div>

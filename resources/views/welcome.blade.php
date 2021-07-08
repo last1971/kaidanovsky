@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('content')
+@section('header')
     <style>
         .select-cards {
             max-width: 596px;
@@ -27,6 +27,12 @@
             width: 100%
         }
     </style>
+    <script>
+        function fnOnload(){}
+    </script>
+@endsection
+
+@section('content')
     <main>
         <h1>Юбилей Кайдановского</h1>
         <p>
@@ -49,7 +55,7 @@
             </a>
         </div>
 
-        <div>Юбилейные открытки созданы ещё одним замечательным ростованином - Владимиром Овекиным. Созданы с любовью.</div>
+        <p>Юбилейные открытки созданы ещё одним замечательным ростованином - Владимиром Овекиным. Созданы с любовью.</p>
         <div>
             <p>Обратная сторона открытки:</p>
             <div class="card-back">

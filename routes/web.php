@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'under')->name('under');
-Route::view('/test', 'welcome')->name('welcome');
+Route::view('/test', 'under')->name('under');
+Route::view('/', 'welcome')->name('welcome');
 Route::view('/dark', 'dark')->name('dark');
 Route::view('/light', 'light')->name('light');
 Route::view('/oferta', 'oferta')->name('oferta');
+Route::view('/bank', 'bank')->name('bank');
+Route::view('/privacy', 'privacy')->name('privacy');
 
 Route::post('/test', function (){
    dd(request());

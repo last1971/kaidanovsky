@@ -214,7 +214,6 @@
     @php
         $color = old('color') ?? request('color')
     @endphp
-    <div class="class-holder">
         <div class="prev-next">
             <div>
                 <a href="{{ $color === 'dark' ? route('dark') : route('light') }}">назад</a>
@@ -421,5 +420,5 @@
                 </div>
             </form>
         </main>
-    </div>
+
 @endsection
