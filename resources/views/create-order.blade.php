@@ -384,7 +384,7 @@
                     @error('social')
                     <label for="social" class="alert">ошибка</label>
                     @enderror
-                    <input placeholder="instagram.com/kinoru61" id="social" name="social" class="@error('social') is-invalid @enderror">
+                    <input placeholder="instagram.com/kinoru61" id="social" name="social" class="@error('social') is-invalid @enderror" value="{{ old('social') }}">
                 </div>
 
                 <!--

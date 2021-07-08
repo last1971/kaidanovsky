@@ -34,6 +34,14 @@ class PostcardRequest extends FormRequest
             'fromAddress' => 'required',
             'email' => 'email',
             'phone' => 'regex:/[\d\-\+() ]{10,}/',
+            'isSocial' => 'nullable',
+            'social' => [
+                function ($attribute, $value, $fail) {
+                    if ($this->isSocial && preg_match('/\D/', $value) === 0) {
+                        $fail('Не правильный формат');
+                    }
+                }
+            ],
             'color' => 'in:dark,light',
             'promocode' => [
                 'nullable',
