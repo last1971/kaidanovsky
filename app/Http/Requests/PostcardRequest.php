@@ -37,7 +37,7 @@ class PostcardRequest extends FormRequest
             'isSocial' => 'nullable',
             'social' => [
                 function ($attribute, $value, $fail) {
-                    if ($this->isSocial && preg_match('/\D/', $value) === 0) {
+                    if ($this->isSocial && preg_match('/^\s{0,}\S+\.\S+\/\S+\s{0,}$/', $value) === 0) {
                         $fail('Не правильный формат');
                     }
                 }
