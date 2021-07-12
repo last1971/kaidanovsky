@@ -110,6 +110,10 @@
                 document.getElementById('name').value = localStorage.getItem('name');
             }
 
+            if (localStorage.getItem('payerName') && !'{{ old('payerName') }}') {
+                document.getElementById('payerName').value = localStorage.getItem('payerName');
+            }
+
             if (localStorage.getItem('address') && !'{{ old('address') }}') {
                 document.getElementById('address').value = localStorage.getItem('address');
             }
@@ -304,7 +308,6 @@
                         value="{{ old('name') }}"
                         oninput="fnSaveToLocalStorage(this.id)"
                     >
-
                 </div>
 
                 <div class="input-field @error('address') is-invalid @enderror">
@@ -433,7 +436,22 @@
                 <hr />
 
 
-                <div class="mt-50">Укажите свою контактную инормаию:</div>
+                <div class="mt-50">Укажите контактную инормацию плательщика:</div>
+
+                <div class="input-field @error('payerName') is-invalid @enderror">
+                    <label for="payerName">ФИО</label>
+                    @error('payerName')
+                    <label for="payerName" class="alert">ошибка</label>
+                    @enderror
+                    <input
+                        placeholder="Алексеев Степан Юрьевич"
+                        id="payerName"
+                        name="payerName"
+                        class="@error('payerName') is-invalid @enderror"
+                        value="{{ old('payerName') }}"
+                        oninput="fnSaveToLocalStorage(this.id)"
+                    >
+                </div>
 
                 <div class="input-field @error('email') is-invalid @enderror">
                     <label for="email">Email</label>

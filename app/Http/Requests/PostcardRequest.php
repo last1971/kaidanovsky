@@ -27,6 +27,7 @@ class PostcardRequest extends FormRequest
         return [
             'fromName' => 'regex:/\S+\s.+/u',
             'name' => 'regex:/\S+\s.+/u',
+            'payerName' => 'regex:/\S+\s.+/u',
             'index' => 'required',
             'fromIndex' => 'required',
             'address' => 'required',
@@ -38,7 +39,7 @@ class PostcardRequest extends FormRequest
             'social' => [
                 function ($attribute, $value, $fail) {
                     if ($this->isSocial && preg_match('/^\s{0,}\S+\.\S+\/\S+\s{0,}$/', $value) === 0) {
-                        $fail('Не правильный формат');
+                        $fail('Неправильный формат');
                     }
                 }
             ],
