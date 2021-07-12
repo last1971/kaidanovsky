@@ -21,7 +21,7 @@
             <input type="hidden" name="testing" value="{{ $order->testing }}">
             <input type="hidden" name="callback_on_failure" value="1">
             <input type="hidden" name="client_phone" value="{{ $order->phone }}">
-            <input type="hidden" name="client_name" value="{{ $order->name }}">
+            <input type="hidden" name="client_name" value="{{ $order->payerName }}">
             <input type="hidden" name="client_email" value="{{ $order->email }}">
             <input type="hidden" name="unix_timestamp" value="{{ $order->unix_timestamp }}">
             <input type="hidden" name="salt" value="{{ $order->salt }}">

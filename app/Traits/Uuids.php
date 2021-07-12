@@ -13,7 +13,7 @@ trait Uuids
             if (empty($model->{$model->getKeyName()})) {
                 $model->{$model->getKeyName()} = Uuid::uuid4()->toString();
             }
-            if ($model->getTable() === 'orders' && empty($model->order_number)) {
+            if ($model->getTable() === 'orders') {
                 $model->order_number = $model->query()->max('order_number') + 1;
             }
         });

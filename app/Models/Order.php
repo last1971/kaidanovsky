@@ -76,4 +76,9 @@ class Order extends Model
         return $this->updated_at->unix();
     }
 
+    public function getOrderNumberAttribute(): string
+    {
+        return  '№ ' . $this->attributes['order_number'] . '. Открытка к юбилею Александра Кайдановского.';
+    }
+
 }
