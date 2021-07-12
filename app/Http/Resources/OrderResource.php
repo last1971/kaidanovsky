@@ -20,6 +20,7 @@ class OrderResource extends JsonResource
             'merchant' => $this->merchant,
             'amount' => $this->amount,
             'order_id' => $this->id,
+            'order_number' => '№ ' . $this->order_number . '. Открытка к юбилею Александра Кайдановского.',
             'description' => $this->description,
             'success_url' => route('success'),
             'testing' => $this->testing,

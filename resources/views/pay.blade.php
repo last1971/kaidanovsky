@@ -15,7 +15,7 @@
             <input type="hidden" name="merchant" value="{{ $order->merchant }}">
             <input type="hidden" name="amount" value="{{ $order->amount }}">
             <input type="hidden" name="order_id" value="{{ $order->id }}">
-            <input type="hidden" name="custom_order_id" value="№ {{ $order->order_number }}">
+            <input type="hidden" name="custom_order_id" value="{{ $order->order_number }}">
             <input type="hidden" name="description" value="{{ $order->description }}">
             <input type="hidden" name="success_url" value="{{ route('success') }}">
             <input type="hidden" name="testing" value="{{ $order->testing }}">
