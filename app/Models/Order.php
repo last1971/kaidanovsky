@@ -25,7 +25,10 @@ class Order extends Model
         'fromAddress',
         'fromIndex',
         'customText',
-        'social'
+        'social',
+        'order_status',
+        'order_number',
+        'payerName',
     ];
 
     public string $salt;
