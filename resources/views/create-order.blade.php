@@ -134,16 +134,16 @@
                 document.getElementById('social').value = localStorage.getItem('social');
             }
 
-            if (localStorage.getItem('customFrom') != null && !'{{ old('customFrom') }}') {
-                document.getElementById('customFrom').checked = localStorage.getItem('customFrom');
+            if (localStorage.getItem('customFrom') != null && !'{{ old('customFrom') }}' && localStorage.getItem('customFrom') === 'true') {
+                document.getElementById('customFrom').checked = true;
             }
 
-            if (localStorage.getItem('isCustomText') != null && !'{{ old('isCustomText') }}') {
-                document.getElementById('isCustomText').checked = localStorage.getItem('isCustomText');
+            if (localStorage.getItem('isCustomText') != null && !'{{ old('isCustomText') }}' && localStorage.getItem('isCustomText') === 'true') {
+                document.getElementById('isCustomText').checked = true;
             }
 
-            if (localStorage.getItem('isSocial') != null && !'{{ old('isSocial') }}') {
-                document.getElementById('isSocial').checked = localStorage.getItem('isSocial');
+            if (localStorage.getItem('isSocial') != null && !'{{ old('isSocial') }}' && localStorage.getItem('isSocial') === 'true') {
+                document.getElementById('isSocial').checked = true;
             }
 
             document.getElementById('fromName').setAttribute('data-default', 'Киноклуб K-INO.RU');
