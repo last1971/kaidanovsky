@@ -34,4 +34,7 @@ Route::get('/success', [PostcardController::class, 'success'])->name('success');
 
 Route::get('/order/{order}', [PostcardController::class, 'order'])->name('order');
 
+Route::get('/recreate/{order}', [PostcardController::class, 'recreate'])->name('recreate');
+
+Route::get('/refund/{order}', [PostcardController::class, 'refund'])->name('refund');
 

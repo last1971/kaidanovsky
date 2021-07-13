@@ -98,4 +98,22 @@ class ModulBankService
             return false;
         }
     }
+
+    public function refund(Order $order)
+    {
+        $form_params = [
+            'merchant' => env('MODUL_MERCHANT', 'ad25ef06-1824-413f-8ef1-c08115b9b979'),
+            'amount' => $order->amount,
+            'transaction' => $order->transaction_id,
+            'unix_timestamp' => Carbon::now()->unix(),
+            'salt' => Str::random()
+        ];
+        $form_params['signature'] = $this->getSignature($form_params);
+        $response = $this->client->request(
+            'POST',
+            'api/v1/refund',
+            compact('form_params'),
+        );
+        return json_decode($response->getBody()->getContents());
+    }
 }

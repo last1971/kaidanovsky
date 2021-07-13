@@ -7,12 +7,14 @@ use App\Http\Resources\OrderResource;
 use App\Mail\OrderCreated;
 use App\Models\Order;
 use App\Services\ModulBankService;
+use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class PostcardController extends Controller
@@ -23,6 +25,29 @@ class PostcardController extends Controller
         $order = Order::query()->create($request->all());
         Mail::to($order->email)->queue(new OrderCreated($order));
         return view('pay', ['order' => new OrderResource($order)]);
+    }
+
+    public function recreate(Order $order)
+    {
+        $order->touch();
+        $order->save();
+        return view('pay', ['order' => new OrderResource($order)]);
+    }
+
+    public function refund(Order $order, ModulBankService $service)
+    {
+        try {
+            $res = $service->refund($order);
+            if ($res->refund->state !== 'FAILED') {
+                $order->status = 'REFUNDED';
+                $order->save();
+            }
+        } catch (Exception $e)
+        {
+            Log::error($e->getMessage());
+            abort(500);
+        }
+        return redirect()->action([PostcardController::class, 'order'], compact('order'));
     }
 
     /**

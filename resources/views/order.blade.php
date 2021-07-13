@@ -35,7 +35,7 @@
             @elseif($order->status === 'PROCESSING')
                 Оплата обрабатывается
             @elseif($order->status === 'FAILED')
-                Ошибка оплаты, <a href="">попробуйте еще раз</a>!
+                Ошибка оплаты, <a href="{{ route('recreate', compact('order')) }}">попробуйте еще раз</a>!
             @elseif($order->status === 'WAITING_FOR_3DS')
                 Ожидание 3DS
             @else
@@ -44,7 +44,7 @@
         </span>
     </div>
 
-    @if($order->status === 'paid')
-        <button>Refund</button>
+    @if($order->status === 'COMPLETE')
+        <a href="{{ route('refund', compact('order')) }}">Вернуть оплату</a>!
     @endif
 @endsection
