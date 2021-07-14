@@ -25,8 +25,8 @@
     <meta property="fb:admins" content="100000432952509" />
     <title>75 лет Александру Кайдановскому</title>
 
-    <link rel="icon" href="favicon.svg">
-    <link rel=”mask-icon” href=”favicon.svg” color=”#000000">
+    <link rel="icon" href="/favicon.svg">
+    <link rel=”mask-icon” href=”/favicon.svg” color=”#000000">
 
     <title>75 лет Александру Кайдановскому</title>
 
@@ -96,17 +96,17 @@
         .prev-next div {
             margin: 10px;
             height: 100%;
-            line-height: 50px;
-            text-transform: capitalize;
             display: grid;
             grid-template-columns: 33% 34% 33%;
         }
         .prev-next a {
-            display: inline-block;
             text-decoration: none;
             text-align: center;
             border: solid 1px gray;
             border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .mt-50 {
             margin-top: 50px;
@@ -120,7 +120,6 @@
             margin: 50px auto 50px auto;
             height: 200px;
             padding: 30px 10px;
-            margin-top: 50px;
             display: flex;
         }
         footer > * {

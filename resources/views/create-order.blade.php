@@ -95,8 +95,32 @@
             width: 62%;
             margin: 40px auto;
         }
+        .agreement{
+            border: solid 1px transparent;;
+            border-radius: 6px;
+            margin: 5px;
+            padding: 5px;
+            display: grid;
+            grid-template-columns: 50px auto;
+            gap: 10px;
+        }
+        .agreement .agreement-text {
+            font-size: 0.9em !important;
+        }
+        .agreement .agreement-text label {
+            font-weight: 900;
+        }
+        .agreement-input {
+            text-align: center;
+        }
+        .agreement.is-invalid {
+            border: solid 1px red;
+        }
     </style>
     <script>
+        function fnChangeAgreement(val){
+            document.getElementById('agree').value = val ? 'true' : 'false';
+        }
         function fnChange(element) {
             const input = element.parentElement.querySelector('input,textarea');
             const counter = element.parentElement.querySelector('.counter');
@@ -106,6 +130,10 @@
             fnSaveToLocalStorage(element.id);
         }
         function fnOnload(){
+            if ('{{ old('agree') }}' === 'false') {
+                document.getElementById('agreement').checked = false;
+            }
+
             if (localStorage.getItem('name') && !'{{ old('name') }}') {
                 document.getElementById('name').value = localStorage.getItem('name');
             }
@@ -521,6 +549,30 @@
                         <li>Заполнение открытки каллиграфом.</li>
                         <li>Отправка открытки Почтой России по заявленному адресу.</li>
                     </ul>
+                </div>
+
+                <div class="agreement @error('agreement') is-invalid @enderror">
+                    <div class="agreement-input">
+                        <input
+                            id="agreement"
+                            name="agreement"
+                            type="checkbox"
+                            checked
+                            onchange="fnChangeAgreement(this.checked)"
+                        >
+                        <input
+                            id="agree"
+                            name="agree"
+                            value="{{ (old('agree') === 'true' || old('agree') === null) ? 'true' : 'false' }}"
+                            type="hidden"
+                        >
+                    </div>
+                    <div class="agreement-text">
+                        Я понимаю необходимость заполнения этой формы и <a href="/privacy">выражаю согласие</a> на обработку моих данных в целях отправки заказанной мною открытки адресату.
+                        @error('agreement')
+                        <label for="agreement" class="alert">Без вашего согласия мы не можем начать оформление</label>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="send-holder">

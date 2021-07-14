@@ -25,6 +25,7 @@ class PostcardRequest extends FormRequest
     public function rules()
     {
         return [
+            'agreement' => 'required',
             'fromName' => 'regex:/\S+\s.+/u',
             'name' => 'regex:/\S+\s.+/u',
             'payerName' => 'regex:/\S+\s.+/u',
